@@ -1,0 +1,70 @@
+bugs:
+  - id: bug_01
+    file: src/textutils/words.py
+    function: count_words
+    difficulty: easy
+    description: "count_words returns the wrong number when text contains newlines or repeated spaces."
+    expected_test: tests/test_words.py::test_count_words_ignores_extra_whitespace
+
+  - id: bug_02
+    file: src/textutils/words.py
+    function: first_n_words
+    difficulty: easy
+    description: "first_n_words returns one word fewer than requested."
+    expected_test: tests/test_words.py::test_first_n_words_returns_requested_count
+
+  - id: bug_03
+    file: src/textutils/words.py
+    function: word_frequencies
+    difficulty: easy
+    description: "word_frequencies counts 'The' and 'the' as different words. It should be case-insensitive."
+    expected_test: tests/test_words.py::test_word_frequencies_is_case_insensitive
+
+  - id: bug_04
+    file: src/textutils/case.py
+    function: slugify
+    difficulty: medium
+    description: "slugify leaves runs of punctuation and spaces as multiple hyphens instead of one."
+    expected_test: tests/test_case.py::test_slugify_collapses_punctuation_and_spaces
+
+  - id: bug_05
+    file: src/textutils/case.py
+    function: to_camel_case
+    difficulty: easy
+    description: "to_camel_case capitalizes the first word too, so 'user_name' becomes 'UserName' instead of 'userName'."
+    expected_test: tests/test_case.py::test_to_camel_case_keeps_first_word_lowercase
+
+  - id: bug_06
+    file: src/textutils/truncate.py
+    function: truncate
+    difficulty: medium
+    description: "truncate adds an ellipsis to text that exactly fits max_len, so 'hello' with max_len 5 is cut."
+    expected_test: tests/test_truncate.py::test_truncate_keeps_text_that_fits_exactly
+
+  - id: bug_07
+    file: src/textutils/lists.py
+    function: join_with_and
+    difficulty: medium
+    description: "join_with_and gives 'cats, and dogs' for two items. It should give 'cats and dogs'."
+    expected_test: tests/test_lists.py::test_join_with_and_two_items
+
+  - id: bug_08
+    file: src/textutils/stats.py
+    function: reading_minutes
+    difficulty: medium
+    description: "reading_minutes truncates to whole minutes, so 250 words at 200 wpm gives 1 instead of 1.25."
+    expected_test: tests/test_stats.py::test_reading_minutes_keeps_fraction
+
+  - id: bug_09
+    file: src/textutils/stats.py
+    function: average_word_length
+    difficulty: medium
+    description: "average_word_length counts spaces as characters, so 'ab cd' gives 2.5 instead of 2.0."
+    expected_test: tests/test_stats.py::test_average_word_length_uses_word_lengths
+
+  - id: bug_10
+    file: src/textutils/stats.py
+    function: longest_word
+    difficulty: hard
+    description: "longest_word returns the last of several equally long words. It should return the first."
+    expected_test: tests/test_stats.py::test_longest_word_returns_first_on_tie
